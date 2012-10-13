@@ -1,0 +1,31 @@
+--- xorg-gtest-0.5.0/configure.ac.orig	2012-10-02 06:14:45.000000000 +0200
++++ xorg-gtest-0.5.0/configure.ac	2012-10-12 19:52:38.641817153 +0200
+@@ -53,27 +53,7 @@
+ AC_SUBST(SOURCEDIR, ['${prefix}/src/xorg-gtest'])
+ AC_SUBST(DUMMY_CONF_PATH, ['${datarootdir}/xorg/gtest/dummy.conf'])
+ 
+-# Check if we can build integration tests
+-AS_IF([test "x$enable_integration_tests" != xno],
+-      [AC_MSG_CHECKING([for X.org server])]
+-      [PKG_CHECK_EXISTS([xorg-server],
+-                        [have_xorg_server=yes],
+-                        [have_xorg_server=no])]
+-      [AC_MSG_RESULT([$have_xorg_server])])
+-AS_IF([test "x$enable_integration_tests" = xyes -a \
+-       "x$have_xorg_server" != xyes],
+-      [AC_MSG_ERROR([X.org server required for integration tests])])
+-
+-AS_IF([test "x$have_xorg_server" = xyes],
+-      [MODULES=`$PKG_CONFIG --variable=moduledir --print-errors xorg-server`
+-       test "x$?" = "x0" && have_modules=yes])
+-AS_IF([test "x$have_modules" = xyes],
+-      [AC_CHECK_FILE([$MODULES/drivers/dummy_drv.so], [have_dummy_module=yes])])
+-AS_IF([test "x$enable_integration_tests" = xyes -a \
+-       "x$have_dummy_module" != xyes],
+-      [AC_MSG_ERROR([X.org Dummy video driver required for integration tests])])
+-
+-AM_CONDITIONAL(ENABLE_XORG_GTEST_TESTS, [test "x$have_dummy_module" = xyes ])
++AM_CONDITIONAL(ENABLE_XORG_GTEST_TESTS, [true])
+ 
+ AC_CONFIG_FILES([Makefile
+                  aclocal/Makefile
