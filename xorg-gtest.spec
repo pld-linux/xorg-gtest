@@ -1,12 +1,12 @@
 Summary:	X.Org GTest testing environment for Google Test
 Summary(pl.UTF-8):	Środowisko testowe X.Org GTest dla szkieletu Google Test
 Name:		xorg-gtest
-Version:	0.5.0
+Version:	0.6.0
 Release:	1
 License:	MIT
 Group:		X11/Libraries
 Source0:	http://xorg.freedesktop.org/releases/individual/test/%{name}-%{version}.tar.bz2
-# Source0-md5:	bcd34ec5e5dea25687b01b110fccdcae
+# Source0-md5:	03840e2f77da5b7f44e99f6ebd8c310c
 Patch0:		%{name}-noserver.patch
 Patch1:		%{name}-missing.patch
 URL:		http://xorg.freedesktop.org/
@@ -39,7 +39,7 @@ zatrzymywania serwera X do celów testowych.
 %patch1 -p1
 
 %build
-%{__aclocal} -I m4
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure
@@ -51,6 +51,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+# this belongs to system gtest
+%{__rm} $RPM_BUILD_ROOT%{_includedir}/gtest/gtest.h
 
 %clean
 rm -rf $RPM_BUILD_ROOT
