@@ -1,12 +1,12 @@
 Summary:	X.Org GTest testing environment for Google Test
 Summary(pl.UTF-8):	Środowisko testowe X.Org GTest dla szkieletu Google Test
 Name:		xorg-gtest
-Version:	0.7.0
+Version:	0.7.1
 Release:	1
 License:	MIT
 Group:		X11/Libraries
 Source0:	http://xorg.freedesktop.org/releases/individual/test/%{name}-%{version}.tar.bz2
-# Source0-md5:	c42a25bb8f10816cd283689f7d66460e
+# Source0-md5:	31beb4d7d2b4eba7f9265fa0cb4c6428
 Patch0:		%{name}-noserver.patch
 URL:		http://xorg.freedesktop.org/
 BuildRequires:	autoconf >= 2.60
